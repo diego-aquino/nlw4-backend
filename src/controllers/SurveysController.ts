@@ -13,6 +13,13 @@ class SurveysController {
 
     return response.status(201).json(survey);
   }
+
+  async list(_request: Request, response: Response): Promise<Response> {
+    const surveysRepository = getCustomRepository(SurveysRepository);
+    const surveys = await surveysRepository.find({});
+
+    return response.status(200).json(surveys);
+  }
 }
 
 export default SurveysController;
